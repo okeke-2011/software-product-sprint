@@ -27,10 +27,23 @@ function addRandomGreeting() {
   factContainer.innerText = fact;
 }
 
-async function greetUser() {
+async function quotes() {
   const responseFromServer = await fetch('/hello');
-  const textFromResponse = await responseFromServer.text();
+  const quote = await responseFromServer.json();
 
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = textFromResponse;
+  const statsListElement = document.getElementById('quote-container');
+  statsListElement.innerHTML = '';
+
+  statsListElement.appendChild(
+      createListElement(quote.quote1));
+  statsListElement.appendChild(
+      createListElement(quote.quote2));
+  statsListElement.appendChild(
+      createListElement(quote.quote3));
+}
+
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
