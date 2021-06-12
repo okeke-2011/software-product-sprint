@@ -16,13 +16,21 @@
  * Adds a random greeting to the page.
  */
 function addRandomGreeting() {
-  const greetings =
-      ["Education Level: Rising junior ", 'Age: 18 years old', 'DOB: November 27th, 2002', 'Height: 6ft'];
+  const facts =
+      ['Education Level: Rising junior', 'Age: 18 years old', 'DOB: November 27th, 2002', 'Height: 6ft'];
 
   // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  const fact = facts[Math.floor(Math.random() * facts.length)];
 
   // Add it to the page.
+  const factContainer = document.getElementById('fact-container');
+  factContainer.innerText = fact;
+}
+
+async function greetUser() {
+  const responseFromServer = await fetch('/hello');
+  const textFromResponse = await responseFromServer.text();
+
   const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  greetingContainer.innerText = textFromResponse;
 }
