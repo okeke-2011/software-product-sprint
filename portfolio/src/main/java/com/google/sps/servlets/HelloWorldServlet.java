@@ -13,6 +13,7 @@ public class HelloWorldServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello Favour!</h1>");
+    response.getWriter().println("Hey there,\n"); 
+    response.getWriter().println("I'm Favour, the owner of this site. Nice to meet you!");
   }
 }
